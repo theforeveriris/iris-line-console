@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/command_title_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="?bluelineconsoleBaseTextColor"
+        android:background="?bluelineconsoleFrameColor"
+        android:padding="3sp"
+        />
+    <!-- To make ScrollView keep bottom by default, both ScrollView and contents are rotated  -->
+    <ScrollView
+        android:id="@+id/command_output_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+        <TextView
+            android:id="@+id/command_output_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?bluelineconsoleBaseTextColor"
+            android:fontFamily="monospace"
+            android:padding="3sp"
+            />
+    </ScrollView>
+</LinearLayout>

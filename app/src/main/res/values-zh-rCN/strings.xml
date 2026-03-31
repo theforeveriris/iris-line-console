@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Iris Line Console</string>
+    <string name="preferences_item_about_this_app_github_repo">GitHub 上的 Iris Line Console</string>
+    <string name="preferences_item_about_this_app_github_repo_summary">访问 https://github.com/nhirokinet/bluelineconsole</string>
+
+    <!-- ActivityMain -->
+    <string name="displayedFullVersionString">版本 %1$s</string>
+    <string name="loading_main_caption">正在刷新数据库......</string>
+    <string name="loading_detail_for_command_search">安装后首次启动,或是更改语言设定后首次启动，\n刷新可能需要一段时间才能完成（有时几十秒）。</string>
+	
+    <!-- Calculators -->
+    <string name="calculator_precision_format">计算精度: %1$s</string>
+    <string name="calculator_precision_no_error">无差错</string>
+    <string name="calculator_precision_rounding">进位舍入</string>
+    <string name="calculator_error_division_by_zero">除以 0</string>
+    <string name="calculator_error_unit_conversion_failure">无法将 \"%1$s\" 转换为 \"%2$s\"</string>
+    
+    <!-- Command searcher texts for results -->
+    <string name="result_search_query_on_engine_format">在 %2$s 上搜索 \"%1$s\"</string>
+    <string name="result_static_webpage_format">访问 %1$s</string>
+    <string name="result_config_summary">Iris Line Console 选项</string>
+
+    <!-- Themes -->
+    <string name="theme_name_default">默认（浅色或深色，依据系统设置）</string>
+    <string name="theme_name_light">浅色</string>
+    <string name="theme_name_dark">深色</string>
+    <string name="theme_name_marine">海洋色</string>
+    <string name="theme_name_old_computer">旧电脑</string>
+
+    <!-- Widgets -->
+    <string name="widget_launcher_label">Iris Line Console 快捷方式</string>
+
+    <!-- String match strategies -->
+    <string name="string_match_strategy_substring">正常</string>
+    <string name="string_match_strategy_skipped_substring">跳跃子字符串（如，搜索 \"abd\" 显示 \"abcdef\"）</string>
+
+    <!-- Notification for OS -->
+    <string name="notification_launch_this_app">启动 Iris Line Console</string>
+    <string name="notification_channel_always_show">始终在通知栏显示启动 Iris Line Console 的图标</string>
+	
+    <!-- Preferences general buttons -->
+    <string name="button_add">添加</string>
+    <string name="button_update">更新</string>
+    <string name="button_delete">删除</string>
+    <string name="button_close">关闭</string>
+    <string name="button_increment_minimal">+</string>
+    <string name="button_decrement_minimal">-</string>
+
+    <!-- Colors -->
+    <string name="rgb_color_red">红</string>
+    <string name="rgb_color_green">绿</string>
+    <string name="rgb_color_blue">蓝</string>
+    <string name="rgb_color_display">RGB (红:%1$d, 绿:%2$d, 蓝:%3$d)</string>
+
+    <!-- Preferences general notes -->
+    <string name="note_take_effect_after_restart">此设置在重启 Iris Line Console 后生效。</string>
+
+    <!-- Preferences, titles for headers and footers -->
+    <string name="preferences_title_for_header_and_footer">配置</string>
+    <string name="preferences_title_for_header_and_footer_url">URL</string>
+    <string name="preferences_title_for_header_and_footer_add_custom_urls">添加 URL</string>
+    <string name="preferences_title_for_header_and_footer_edit_custom_urls">编辑 URL</string>
+    <string name="preferences_title_for_header_and_footer_widget_commands">小部件命令</string>
+    <string name="preferences_title_for_header_and_footer_accent_color">强调色</string>
+    <string name="preferences_title_for_header_home_screen_default_items">主屏幕</string>
+    <string name="preferences_title_for_footer_home_screen_default_items">默认项目</string>
+    <string name="preferences_title_for_header_and_footer_home_screen_add_widget">添加小部件</string>
+    <string name="preferences_title_for_header_and_footer_widget">小部件</string>
+    <string name="preferences_title_for_header_and_footer_license">许可证</string>
+
+    <!-- Preferences categories, main screen -->
+    <string name="preferences_category_main">一般</string>
+    <string name="preferences_category_appearance">外观</string>
+    <string name="preferences_category_apps">启动应用</string>
+    <string name="preferences_category_urls">网页和搜索</string>
+    <string name="preferences_category_custom_commands">定制命令</string>
+    <string name="preferences_category_home_screen">主屏幕</string>
+    <string name="preferences_category_contacts">通讯录</string>
+    <string name="preferences_category_advanced">高级</string>
+    <string name="preferences_category_about_this_app">关于</string>
+
+    <!-- Preferences items, main screen -->
+    <string name="preferences_item_main_show_startup_help_title">应用启动时显示帮助</string>
+    <string name="preferences_item_main_show_startup_help_summary">此选项显示“help”命令的指导。你最好在记住“help”命令后禁用此选项。</string>
+    <string name="preferences_item_default_assist_app_title">设为默认的助手应用</string>
+    <string name="preferences_item_default_assist_app_summary">要通过长按主页按钮打开 Iris Line Console，请从设置菜单将其设为默认的助手应用。</string>
+    <string name="preferences_item_main_always_show_notification_title">始终将图标显示为通知</string>
+    <string name="preferences_item_main_always_show_notification_summary">始终显示通知图标以方便启动 Iris Line Console</string>
+    <string name="preferences_item_text_match_strategy_title">文本搜索匹配样式</string>
+    <string name="preferences_item_appearance_theme_title">主题</string>
+    <string name="preferences_item_appearance_theme_summary">更改此选项时，Iris Line Console 会立即重新启动。</string>
+    <string name="preferences_item_appearance_accent_color">强调色</string>
+    <string name="preferences_item_appearance_animation_title">动画</string>
+    <string name="preferences_item_appearance_show_icons_title">显示图标</string>
+    <string name="preferences_item_apps_show_package_name_title">显示包名</string>
+    <string name="preferences_item_apps_show_package_name_summary">注意:即使关闭了这个选项，你也可以通过包名的一部分找到应用程序。</string>
+    <string name="preferences_item_display_custom_urls_title">网页和搜索</string>
+    <string name="preferences_item_default_search_title">默认搜索引擎</string>
+    <string name="preferences_item_default_search_summary">总是在列表的底部显示特定的搜索引擎</string>
+    <string name="preferences_item_default_search_option_none">（无）</string>
+    <string name="preferences_item_custom_commands_widgets">小部件命令</string>
+    <string name="preferences_item_home_screen_default_items">主屏项目</string>
+    <string name="preferences_item_home_screen_default_items_summary">在 Iris Line Console 被设为启动器的情况下，当主屏幕上没有任何输入时，显示结果和小部件。</string>
+    <string name="preferences_item_contacts_enable_search">启用联系人搜索</string>
+    <string name="preferences_item_contacts_search_permission_explanation">搜索联系人需要有“通讯录”的读取权限。您可能会被要求授予访问权限。</string>
+    <string name="preferences_item_advanced_main_edittext_hint_locale_english_title">在命令输入窗口上通知英语输入到键盘输入软件</string>
+    <string name="preferences_item_advanced_main_edittext_hint_locale_english_summary">命令输入窗口使用 setImeHintLocales 并设为英语语言环境。不同的键盘输入软件有不同的行为。</string>
+    <string name="preferences_item_advanced_main_edittext_flagforceascii_title">在命令输入窗口上设置 IME_FLAG_FORCE_ASCII  标志</string>
+    <string name="preferences_item_advanced_main_edittext_flagforceascii_summary">IME_FLAG_FORCE_ASCII 表示打算使用 ASCII 字符进行输入。不同的键盘输入软件有不同的行为。</string>
+    <string name="preferences_item_accept_arbitrary_url">接受任意 URL 格式</string>
+    <string name="preferences_item_accept_arbitrary_url_summary">默认情况下，Iris Line Console 只接受以 http:// 和 https:// 开头的 URL 作为 URL 输入。启用选项后，将接受其他格式的 URL 作为输入。</string>
+    <string name="preferences_item_about_this_app_licensing_information">许可信息</string>
+
+    <!-- Preferences items, URL screens -->
+    <string name="preferences_url_add_button">添加自定义 URL 或搜索引擎</string>
+    <string name="preferences_url_column_command_name">命令名称</string>
+    <string name="preferences_url_column_display_name">展示名称</string>
+    <string name="preferences_url_column_url">URL</string>
+    <string name="preferences_url_column_has_query">搜索引擎(启用后，查询将被添加在末尾)</string>
+    <string name="preferences_url_property_enabled">已启用</string>
+    <string name="preferences_url_property_disabled">已禁用</string>
+    <string name="preferences_url_property_preset">预设</string>
+    <string name="preferences_url_varies_with_locale">随设备语言设置而变化</string>
+
+    <!-- Preferences items, accent color screens -->
+    <string name="preferences_accent_color_theme_default">主题默认</string>
+    <string name="preferences_accent_color_custom">自定义颜色</string>
+    <string name="preferences_accent_color_theme_without_accent_color">当前主题 (%1$s) 不支持更改强调色。</string>
+
+    <!-- Preferences item, home screen default items screens -->
+    <string name="preferences_home_screen_add_command_button">添加命令</string>
+    <string name="preferences_home_screen_add_widget_button">添加小部件</string>
+    <string name="preferences_home_screen_add_widget_select_message">选择要添加的小部件：</string>
+    <string name="preferences_home_screen_widget_label">小部件</string>
+    <string name="preferences_home_screen_command_label">命令</string>
+
+    <!-- Preferences item, widgets related messages -->
+    <string name="preferences_widget_height_px">高度 （px）</string>
+    <string name="preferences_widget_minimum_height_show">最小高度：%1$d px</string>
+    <string name="preferences_widget_default_height_show">默认高度：%1$d px</string>
+    <string name="preferences_widget_configure_the_widget">配置小部件</string>
+
+    <!-- Preferences item, widget commands related messages -->
+    <string name="preferences_command_widget_command_add">添加小部件命令</string>
+    <string name="preferences_command_widget_command_new_label">新的小部件命令</string>
+    <string name="preferences_command_widget_command_save_and_select_widget">选择并保存小部件</string>
+    <string name="preferences_command_widget_command_command">命令名称</string>
+    <string name="preferences_command_widget_command_abbreviation">可缩写命令名称</string>
+    <string name="preferences_command_widget_command_abbreviable_label">缩写</string>
+
+    <!-- Contact search -->
+    <string name="contacts_action_dial_phone_number">电话： %1$s</string>
+    <string name="contacts_action_email">电子邮件：%1$s</string>
+
+    <!-- factor command -->
+    <string name="factor_error_not_valid_integer">is not valid integer</string>
+    <string name="factor_error_not_positive_number">is not positive number</string>
+    <string name="factor_error_factor_too_large">includes factor larger than %1$s</string>
+
+    <!-- Error messages, user errors -->
+    <string name="error_invalid_url_least_validation_for_web">无效的 URL：必须以 https:// 或 http:// 开头且至少再多一条斜杠(\"/\").</string>
+    <string name="error_invalid_url_least_validation_for_web_arbitrary_schema">无效的 URL：必须以 &lt;scheme&gt;:// 开头且至少再多一条斜杠(\"/\").</string>
+    <string name="error_invalid_command_name">无效的名称：命令不能包含空格且不能为空</string>
+    <string name="error_empty_display_name">显示名称为空</string>
+
+    <!-- Error messages, system errors -->
+    <string name="error_failure_could_not_start_command">错误：无法启动命令</string>
+    <string name="error_failure_could_not_open_url">错误：无法打开 URL</string>
+    <string name="error_failure_not_found_opening_application_with_class">\"%1$s\" 不是一个可启动的包。</string>
+    <string name="error_failure_could_not_connect_to_the_widget">错误：无法连接到小部件</string>
+
+    <!-- Error messages, app internal errors -->
+    <string name="error_calculator_internal_error">未知的计算器内部错误</string>
+
+    <!-- Startup Help Activity -->
+    <string name="startup_help_title_for_header_and_footer">通知</string>
+    <string name="startup_help_title">关于“help” 命令</string>
+    <string name="startup_help_body_part1">要显示用法，输入</string>
+    
+    <string name="startup_help_body_part3">看看该怎么用。</string>
+    <string name="startup_help_check_never_later">不再显示这条消息</string>
+
+    <!-- Migration message -->
+    <string name="migration_lost_happened_message">
+        数据似乎在 Iris Line Console 外被恢复。
+        \n
+        \n小部件无法迁移且已丢失。如有必要，可从 config 重新配置小部件设置。
+    </string>
+
+    <!-- Help -->
+    <string name="app_help_text">
+        你可以输入以下列表之一来搜索应用程序或命令。
+        \n
+        \n-&#032;应用名称的一部分（比如，Iris Line Console）
+        \n-&#032;包名的一部分（比如，net.theforeveriris.irislineconsole）
+        \n-&#032;URL（比如，https://example.com/）
+        \n-&#032;计算公式 （比如， 2+3*5, 1inch in cm, 1m+1inch, 1m+1inch in cm）
+        \n-&#032;下列命令之一 （比如，help）
+        \n
+        \n可用命令：
+        \n
+        \n-&#032;help
+        \n-&#032;config
+        \n-&#032;date
+        \n-&#032;all_apps
+        \n-&#032;cal [&lt;month&gt; &lt;year&gt;]
+        \n-&#032;factor &lt;number&gt; ...
+        \n-&#032;bing &lt;query&gt;
+        \n-&#032;duckduckgo &lt;query&gt;
+        \n-&#032;google &lt;query&gt;
+        \n-&#032;wikipedia &lt;query&gt;
+        \n-&#032;yahoo &lt;query&gt;
+		\n
+        \n搜索引擎名称可以缩写。
+        \n比如， \"d somequery\" 等同于 \"duckduckgo somequery\"。
+        \n
+        \n网络管理命令：
+        \n
+        \n-&#032;ping &lt;host&gt;, ping6 &lt;host&gt;　（仅在有相应命令的系统上可用）
+		\n
+        \n其他命令：
+        \n
+        \n-&#032;颜色代码 (比如，#4d68ff)
+        \n
+        \n提示：将 Iris Line Console 设为默认助手应用后可通过长按主页按钮打开它。具体方法为：系统设置 &gt; 应用程序 &amp; 通知 &gt; 默认应用 &gt; 助手应用或类似菜单。
+        \n提示：可以通过始终显示通知从通知菜单启动 Iris Line Console。可输入 config 找到该选项。
+    </string>
+</resources>

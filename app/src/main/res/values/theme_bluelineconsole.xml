@@ -1,0 +1,34 @@
+<resources>
+    <color name="irislineconsoleTextOnFrame">#000000</color>
+    <color name="irislineconsoleTextOnFrameDark">#ffffff</color>
+    <color name="irislineconsoleColorFrame">#dddddd</color>
+    <color name="irislineconsoleColorFrameDark">#444444</color>
+
+    <style name="AppThemeIrisLineConsole" parent="BaseAppThemeLight">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="bluelineconsoleFrameColor">@color/irislineconsoleColorFrame</item>
+        <item name="bluelineconsoleFrameTextColor">@color/irislineconsoleTextOnFrame</item>
+    </style>
+
+    <style name="AppThemeIrisLineConsoleHome" parent="AppThemeIrisLineConsole">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowShowWallpaper">true</item>
+    </style>
+
+    <style name="AppThemeIrisLineConsoleDark" parent="BaseAppThemeDark">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="bluelineconsoleFrameColor">@color/irislineconsoleColorFrameDark</item>
+        <item name="bluelineconsoleFrameTextColor">@color/irislineconsoleTextOnFrameDark</item>
+    </style>
+
+    <style name="AppThemeIrisLineConsoleDarkHome" parent="AppThemeIrisLineConsoleDark">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowShowWallpaper">true</item>
+    </style>
+</resources>

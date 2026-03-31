@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3f51b5</color>
+    <color name="colorPrimaryDark">#303f9f</color>
+
+    <color name="colorAccent">#4d68ff</color>
+    <color name="baseText">#000000</color>
+    <color name="colorBackgroundOfCommand">#dddddd</color>
+    <color name="baseBackground">#ffffff</color>
+    <color name="selectedItemBackground">#cccccc</color>
+    <color name="disabledText">#808080</color>
+
+    <color name="colorAccentDark">#4d68ff</color>
+    <color name="baseTextDark">#ffffff</color>
+    <color name="colorBackgroundOfCommandDark">#444444</color>
+    <color name="baseBackgroundDark">#000000</color>
+    <color name="selectedItemBackgroundDark">#666666</color>
+    <color name="disabledTextDark">#808080</color>
+</resources>

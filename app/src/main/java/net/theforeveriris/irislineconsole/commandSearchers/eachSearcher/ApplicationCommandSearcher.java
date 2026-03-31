@@ -1,0 +1,175 @@
+package net.theforeveriris.irislineconsole.commandSearchers.eachSearcher;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.graphics.drawable.Drawable;
+import android.preference.PreferenceManager;
+import android.util.Pair;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import net.theforeveriris.irislineconsole.R;
+import net.theforeveriris.irislineconsole.applicationMain.MainActivity;
+import net.theforeveriris.irislineconsole.commandSearchers.lib.StringMatchStrategy;
+import net.theforeveriris.irislineconsole.commands.applications.ApplicationDatabase;
+import net.theforeveriris.irislineconsole.dataStore.cache.ApplicationInformation;
+import net.theforeveriris.irislineconsole.interfaces.CandidateEntry;
+import net.theforeveriris.irislineconsole.interfaces.CommandSearcher;
+import net.theforeveriris.irislineconsole.interfaces.EventLauncher;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class ApplicationCommandSearcher implements CommandSearcher {
+    private ApplicationDatabase applicationDatabase;
+
+    public ApplicationCommandSearcher() {
+    }
+
+    @Override
+    public void refresh(Context context) {
+        this.applicationDatabase = new ApplicationDatabase(context);
+    }
+
+    @Override
+    public void close() {
+        this.applicationDatabase.close();
+    }
+
+    @Override
+    public boolean isPrepared() {
+        return this.applicationDatabase.isPrepared();
+    }
+
+    @Override
+    public void waitUntilPrepared() {
+        this.applicationDatabase.waitUntilPrepared();
+    }
+
+    @Override
+    @NonNull
+    public List<CandidateEntry> searchCandidateEntries(String query, Context context) {
+        List<CandidateEntry> candidates = new ArrayList<>();
+
+        final boolean matchAllApplications = query.equalsIgnoreCase("all_apps");
+
+        List<Pair<Integer, CandidateEntry>> appCandidates = new ArrayList<>();
+        for (ApplicationInformation applicationInformation : applicationDatabase.getApplicationInformationList()) {
+            final String appLabel = applicationInformation.getLabel();
+            final ApplicationInfo androidApplicationInfo = applicationDatabase.getAndroidApplicationInfo(applicationInformation.getPackageName());
+
+            if (matchAllApplications) {
+                appCandidates.add(new Pair<>(0, new AppOpenCandidateEntry(context, applicationInformation, androidApplicationInfo, appLabel)));
+                continue;
+            }
+
+            int appLabelMatchResult = StringMatchStrategy.match(context, query, appLabel, false);
+            if (appLabelMatchResult != -1) {
+                appCandidates.add(new Pair<>(appLabelMatchResult, new AppOpenCandidateEntry(context, applicationInformation, androidApplicationInfo, appLabel)));
+                continue;
+            }
+
+            int packageNameMatchResult = StringMatchStrategy.match(context, query, applicationInformation.getPackageName(), false);
+            if (packageNameMatchResult != -1) {
+                appCandidates.add(new Pair<>(100000 + packageNameMatchResult, new AppOpenCandidateEntry(context, applicationInformation, androidApplicationInfo, appLabel)));
+                //noinspection UnnecessaryContinue
+                continue;
+            }
+        }
+
+        Collections.sort(appCandidates, (o1, o2) -> o1.first.compareTo(o2.first));
+
+        for (Pair<Integer, CandidateEntry> entry : appCandidates) {
+            candidates.add(entry.second);
+        }
+
+        return candidates;
+    }
+
+    private static class AppOpenCandidateEntry implements CandidateEntry {
+        private final ApplicationInformation applicationInformation;
+        private final ApplicationInfo androidApplicationInfo;
+        private final String title;
+        private final boolean displayPackageName;
+
+        // Getting app title in Android is slow, so app title also should be given via constructor from cache.
+        AppOpenCandidateEntry(Context context, ApplicationInformation applicationInformation, ApplicationInfo androidApplicationInfo, String appTitle) {
+            this.applicationInformation = applicationInformation;
+            this.androidApplicationInfo = androidApplicationInfo;
+            this.title = appTitle;
+            this.displayPackageName = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("pref_apps_show_package_name", false);
+        }
+
+        @Override
+        @NonNull
+        public String getTitle() {
+            return title;
+        }
+
+        @Override
+        public View getView(MainActivity mainActivity) {
+            if(!displayPackageName) {
+                return null;
+            }
+
+            String packageName = AppOpenCandidateEntry.this.applicationInformation.getPackageName();
+            TextView packageNameView = new TextView(mainActivity);
+            packageNameView.setText(packageName);
+            packageNameView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            return packageNameView;
+        }
+
+        @Override
+        public boolean hasEvent() {
+            return true;
+        }
+
+        @Override
+        public EventLauncher getEventLauncher(final Context context) {
+            return activity -> {
+                String packageName = AppOpenCandidateEntry.this.applicationInformation.getPackageName();
+                Intent intent = activity.getPackageManager().getLaunchIntentForPackage(AppOpenCandidateEntry.this.applicationInformation.getPackageName());
+                if (packageName.equals(context.getPackageName())) {
+                    // special case that happens to some curious behavior in home app
+                    activity.finishIfNotHome();
+                    activity.startActivity(new Intent(activity, MainActivity.class));
+                    return;
+                }
+                if (intent == null) {
+                    Toast.makeText(activity, String.format(activity.getString(R.string.error_failure_not_found_opening_application_with_class), packageName), Toast.LENGTH_LONG).show();
+                    return;
+                }
+                activity.startActivity(intent);
+                activity.finishIfNotHome();
+            };
+        }
+
+        @Override
+        public boolean hasLongView() {
+            return false;
+        }
+
+        @Override
+        public Drawable getIcon(Context context) {
+            return context.getPackageManager().getApplicationIcon(androidApplicationInfo);
+        }
+
+        @Override
+        public boolean isSubItem() {
+            return false;
+        }
+
+        @Override
+        public boolean viewIsRecyclable() {
+            return true;
+        }
+    }
+}

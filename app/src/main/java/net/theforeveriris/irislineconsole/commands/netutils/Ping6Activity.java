@@ -1,0 +1,32 @@
+package net.theforeveriris.irislineconsole.commands.netutils;
+
+import android.content.Intent;
+
+import net.theforeveriris.irislineconsole.applicationMain.MainActivity;
+import net.theforeveriris.irislineconsole.commands.lib.SubprocessCommandActivity;
+
+
+public class Ping6Activity extends SubprocessCommandActivity {
+    private static final String TARGET_COMMAND = "/system/bin/ping6";
+    public static final String TARGET_COMMAND_SHORT = "ping6";
+
+    public Ping6Activity() {
+        super(TARGET_COMMAND, TARGET_COMMAND_SHORT,true);
+    }
+
+    public static boolean commandAvailable() {
+        return SubprocessCommandActivity.commandAvailable(TARGET_COMMAND);
+    }
+
+    @Override
+    protected void onResume() {
+        Intent from_intent = this.getIntent();
+        String host = from_intent.getStringExtra("host");
+
+        this._args = new String[]{host};
+
+        super.onResume();
+
+        setResult(RESULT_OK, new Intent(this, MainActivity.class));
+    }
+}

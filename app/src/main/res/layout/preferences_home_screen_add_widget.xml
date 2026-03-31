@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".applicationMain.PreferencesHomeScreenItemsActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/homeScreenAddWidgetLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3sp"
+        android:text="@string/preferences_home_screen_add_widget_select_message"
+        android:textColor="?bluelineconsoleBaseTextColor"
+        android:background="?bluelineconsoleFrameColor"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        />
+    <ListView
+        android:id="@+id/homeScreenSelectWidgetToAdd"
+        android:labelFor="@id/homeScreenAddWidgetLabel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="?android:colorBackground"
+        android:animateLayoutChanges="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        />
+</LinearLayout>
