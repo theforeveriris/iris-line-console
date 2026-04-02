@@ -176,7 +176,11 @@ public class ClassCommandSearcher implements CommandSearcher {
 
         @Override
         public EventLauncher getEventLauncher(Context context) {
-            return null;
+            return activity -> {
+                if (activity instanceof MainActivity) {
+                    ((MainActivity) activity).changeInputText("c_" + classEntry.name);
+                }
+            };
         }
 
         @Override
@@ -186,7 +190,7 @@ public class ClassCommandSearcher implements CommandSearcher {
 
         @Override
         public boolean hasEvent() {
-            return false;
+            return true;
         }
 
         @Override
