@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,7 +28,6 @@ import net.nhiroki.bluelineconsole.dataStore.cache.ApplicationInformation;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,6 +40,9 @@ public class PreferencesSelectApplicationsActivity extends BaseWindowActivity {
     private ApplicationDatabase _applicationDatabase;
     private Set<String> _selectedPackageNames;
     private final Object _lock = new Object();
+    private List<ApplicationInfoWrapper> _allApplications;
+    private EditText _searchEditText;
+    private TextView _noResultsTextView;
 
     public PreferencesSelectApplicationsActivity() {
         super(R.layout.preferences_select_applications_body, false);
@@ -62,6 +67,7 @@ public class PreferencesSelectApplicationsActivity extends BaseWindowActivity {
         Intent fromIntent = getIntent();
         ArrayList<String> initialSelectedPackages = fromIntent.getStringArrayListExtra(EXTRA_SELECTED_PACKAGES);
         _selectedPackageNames = new HashSet<>(initialSelectedPackages != null ? initialSelectedPackages : new ArrayList<>());
+        _allApplications = new ArrayList<>();
 
         this._applicationListAdapter = new ApplicationListAdapter(this, 0, new ArrayList<>());
         ListView applicationListView = findViewById(R.id.applicationList);
@@ -95,7 +101,53 @@ public class PreferencesSelectApplicationsActivity extends BaseWindowActivity {
             finish();
         });
 
+        // 初始化搜索相关组件
+        _searchEditText = findViewById(R.id.applicationSearchEditText);
+        _noResultsTextView = findViewById(R.id.noResultsTextView);
+        
+        _searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filterApplications(s.toString());
+            }
+        });
+
         _applicationDatabase = new ApplicationDatabase(this);
+    }
+
+    private void filterApplications(String query) {
+        List<ApplicationInfoWrapper> filteredList = new ArrayList<>();
+        String lowerQuery = query.toLowerCase();
+
+        if (query.isEmpty()) {
+            filteredList.addAll(_allApplications);
+        } else {
+            for (ApplicationInfoWrapper wrapper : _allApplications) {
+                if (wrapper.label.toLowerCase().contains(lowerQuery) || 
+                    wrapper.packageName.toLowerCase().contains(lowerQuery)) {
+                    filteredList.add(wrapper);
+                }
+            }
+        }
+
+        _applicationListAdapter.clear();
+        _applicationListAdapter.addAll(filteredList);
+        _applicationListAdapter.notifyDataSetChanged();
+
+        // 显示或隐藏无结果提示
+        if (filteredList.isEmpty() && !query.isEmpty()) {
+            _noResultsTextView.setVisibility(View.VISIBLE);
+        } else {
+            _noResultsTextView.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -120,9 +172,9 @@ public class PreferencesSelectApplicationsActivity extends BaseWindowActivity {
             Collections.sort(wrappers, (o1, o2) -> o1.label.compareToIgnoreCase(o2.label));
             
             runOnUiThread(() -> {
-                _applicationListAdapter.clear();
-                _applicationListAdapter.addAll(wrappers);
-                _applicationListAdapter.notifyDataSetChanged();
+                _allApplications.clear();
+                _allApplications.addAll(wrappers);
+                filterApplications(_searchEditText.getText().toString());
             });
         }).start();
     }

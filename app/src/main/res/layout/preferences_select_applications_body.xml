@@ -8,6 +8,26 @@
     android:background="?android:colorBackground"
     android:orientation="vertical"
     >
+    <EditText
+        android:id="@+id/applicationSearchEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入应用名称或包名搜索"
+        android:padding="12dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:background="?android:attr/selectableItemBackground"
+        />
+    <TextView
+        android:id="@+id/noResultsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="未找到匹配的应用"
+        android:gravity="center"
+        android:padding="20dp"
+        android:textColor="?android:attr/textColorSecondary"
+        android:visibility="gone"
+        />
     <ListView
         android:id="@+id/applicationList"
         android:layout_width="match_parent"
