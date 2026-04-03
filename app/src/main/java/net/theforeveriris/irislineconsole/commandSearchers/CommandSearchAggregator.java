@@ -2,6 +2,7 @@ package net.theforeveriris.irislineconsole.commandSearchers;
 
 import android.content.Context;
 
+import net.theforeveriris.irislineconsole.commandSearchers.eachSearcher.AliasCommandSearcher;
 import net.theforeveriris.irislineconsole.commandSearchers.eachSearcher.ApplicationCommandSearcher;
 import net.theforeveriris.irislineconsole.commandSearchers.eachSearcher.CalendarCommandSearcher;
 import net.theforeveriris.irislineconsole.commandSearchers.eachSearcher.CalculatorCommandSearcher;
@@ -37,6 +38,7 @@ public class CommandSearchAggregator {
         commandSearcherList.add(new HelpCommandSearcher());
         commandSearcherList.add(new PreferencesCommandSearcher());
         commandSearcherList.add(new ClassCommandSearcher());
+        commandSearcherList.add(new AliasCommandSearcher());
         commandSearcherList.add(new DateCommandSearcher());
         commandSearcherList.add(new URICommandSearcher());
         commandSearcherList.add(new NetUtilCommandSearcher());

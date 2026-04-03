@@ -103,6 +103,28 @@
             android:windowSoftInputMode="stateVisible|adjustResize"
             />
         <activity
+            android:name="net.theforeveriris.irislineconsole.applicationMain.PreferencesAliasesActivity"
+            android:exported="false"
+            android:theme="@style/AppThemeIrisLineConsole"
+            />
+        <activity
+            android:name="net.theforeveriris.irislineconsole.applicationMain.PreferencesEachAliasActivity"
+            android:exported="false"
+            android:theme="@style/AppThemeIrisLineConsole"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            />
+        <activity
+            android:name="net.nhiroki.bluelineconsole.applicationMain.PreferencesAliasesActivity"
+            android:exported="false"
+            android:theme="@style/AppThemeIrisLineConsole"
+            />
+        <activity
+            android:name="net.nhiroki.bluelineconsole.applicationMain.PreferencesEachAliasActivity"
+            android:exported="false"
+            android:theme="@style/AppThemeIrisLineConsole"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            />
+        <activity
             android:name=".applicationMain.PreferencesSelectApplicationsActivity"
             android:exported="false"
             android:theme="@style/AppThemeIrisLineConsole"

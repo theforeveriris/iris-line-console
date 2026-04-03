@@ -2,6 +2,7 @@ package net.nhiroki.bluelineconsole.commandSearchers;
 
 import android.content.Context;
 
+import net.nhiroki.bluelineconsole.commandSearchers.eachSearcher.AliasCommandSearcher;
 import net.nhiroki.bluelineconsole.commandSearchers.eachSearcher.ApplicationCommandSearcher;
 import net.nhiroki.bluelineconsole.commandSearchers.eachSearcher.CalendarCommandSearcher;
 import net.nhiroki.bluelineconsole.commandSearchers.eachSearcher.CalculatorCommandSearcher;
@@ -37,6 +38,7 @@ public class CommandSearchAggregator {
         commandSearcherList.add(new HelpCommandSearcher());
         commandSearcherList.add(new PreferencesCommandSearcher());
         commandSearcherList.add(new ClassCommandSearcher());
+        commandSearcherList.add(new AliasCommandSearcher());
         commandSearcherList.add(new DateCommandSearcher());
         commandSearcherList.add(new URICommandSearcher());
         commandSearcherList.add(new NetUtilCommandSearcher());
